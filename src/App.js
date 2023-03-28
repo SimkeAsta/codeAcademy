@@ -1,21 +1,35 @@
-import logo from './logo.svg';
+import logo from './ca-logo.png';
 import './App.css';
+import Header from './Header';
 
 function App() {
+
+  const onPetrasHeaderClick = () => {
+    alert('Petras header button clicked!');
+  }
+
   return (
     <div className="App">
+      
+      <Header name="Martynas" onClick={() => console.log('Header button clicked')}>
+        <img src={logo} className="App-logo" alt="logo" />
+      </Header>
+      
+      
+      <Header name="Petras" onClick={onPetrasHeaderClick} />
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Codeacademy.lt React paskaita!
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://codeacademy.lt/en/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Codeacademy
         </a>
       </header>
     </div>
