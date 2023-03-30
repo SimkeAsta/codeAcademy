@@ -1,6 +1,7 @@
 import logo from './ca-logo.png';
 import './App.css';
 import Header from './Header';
+import { ProductList } from './components/ProductList';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
       <Header name="Petras" onClick={onPetrasHeaderClick} />
       
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Codeacademy.lt React paskaita!
         </p>
@@ -30,7 +31,8 @@ function App() {
           rel="noopener noreferrer"
         >
           Codeacademy
-        </a>
+        </a> */}
+        <ProductList />
       </header>
     </div>
   );
