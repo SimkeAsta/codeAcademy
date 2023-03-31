@@ -2,6 +2,7 @@ import logo from './ca-logo.png';
 import './App.css';
 import Header from './Header';
 import { ProductList } from './components/ProductList';
+import { StudentuSarasas } from './3-paskaita-list-rendering/komponentai/StudentuSarasas'
 
 function App() {
 
@@ -32,7 +33,8 @@ function App() {
         >
           Codeacademy
         </a> */}
-        <ProductList />
+        {/* <ProductList /> */}
+        <StudentuSarasas />
       </header>
     </div>
   );
