@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import { ProductList } from './components/ProductList';
 import { StudentuSarasas } from './3-paskaita-list-rendering/komponentai/StudentuSarasas'
+import { ProductItem } from './project/ProductItem'
 
 function App() {
 
@@ -13,14 +14,14 @@ function App() {
   return (
     <div className="App">
       
-      <Header name="Martynas" onClick={() => console.log('Header button clicked')}>
+      {/* <Header name="Martynas" onClick={() => console.log('Header button clicked')}>
         <img src={logo} className="App-logo" alt="logo" />
       </Header>
       
       
       <Header name="Petras" onClick={onPetrasHeaderClick} />
       
-      <header className="App-header">
+      <header className="App-header"> */}
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Codeacademy.lt React paskaita!
@@ -34,8 +35,10 @@ function App() {
           Codeacademy
         </a> */}
         {/* <ProductList /> */}
-        <StudentuSarasas />
-      </header>
+        {/* <StudentuSarasas /> */}
+        <ProductItem />
+    {/* <NavBar /> */}
+      {/* </header> */}
     </div>
   );
 }
