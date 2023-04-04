@@ -5,6 +5,7 @@ export const Card = styled.div`
   width: 270px;
   background-color: #f0efef;
   border-radius: 5px;
+  cursor: pointer; 
 `;
 
 export const Container = styled.div`
