@@ -1,9 +1,9 @@
 import logo from './ca-logo.png';
 import './App.css';
 import Header from './Header';
-import { ProductList } from './components/ProductList';
+// import { ProductList } from './components/ProductList';
 import { StudentuSarasas } from './3-paskaita-list-rendering/komponentai/StudentuSarasas'
-import { ProductItem } from './project/ProductItem'
+import { ProductList } from './project-example/ProductList'
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
         </a> */}
         {/* <ProductList /> */}
         {/* <StudentuSarasas /> */}
-        <ProductItem />
+        <ProductList />
     {/* <NavBar /> */}
       {/* </header> */}
     </div>

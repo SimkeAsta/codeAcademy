@@ -27,8 +27,12 @@ export const StudentuSarasas = () => {
     //     return <Studentas key={item.Id} studentas={item} />
     // })
 
-    const studentuKomanda = studentai.filter(student => {
+    const studentuKomanda = studentai
+    .filter(student => {
         return student.team === "Studentai";
+    })
+    .map(student => {
+        return <Studentas studentas={student} />
     })
                                               
     const studentaiVienas = studentuKomanda.map(student => {
@@ -43,9 +47,9 @@ export const StudentuSarasas = () => {
         <>
         <h2>Studentai</h2>
         <ul>
-            {studentaiVienas}
-            <Studentas studentas={studentuKomanda[0]}></Studentas>
-            <Studentas studentas={studentuKomanda[1]}></Studentas>
+            {studentuKomanda}
+            {/* <Studentas studentas={studentuKomanda[0]}></Studentas>
+            <Studentas studentas={studentuKomanda[1]}></Studentas> */}
         </ul>
         <h2>Moksleiviai</h2>
         <ul>
