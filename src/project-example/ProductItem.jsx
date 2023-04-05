@@ -11,7 +11,7 @@ import {
   BrandTitle,
 } from "./styles/StyledProduct";
 
-export const ProductItem = ({ product }) => {
+export const ProductItem = ({ product, onClick }) => {
   const { title, thumbnail, brand, price, discountPercentage } = product;
 
   const discountedPrice = discountPercentage
@@ -19,7 +19,7 @@ export const ProductItem = ({ product }) => {
     : "";
 
   return (
-    <Card>
+    <Card onClick={() => onClick(product)}>
       <HeaderWrapper>
         <TitleContainer>
           <BrandTitle>{brand}</BrandTitle>

@@ -9,6 +9,7 @@ import { TextInput } from './6-paskaita-useState/TextInput';
 import { MyCheckbox } from './6-paskaita-useState/Checkbox';
 import { Form } from './6-paskaita-useState/Form';
 import { MoodChecker } from './6-paskaita-useState/MoodChecker'
+import { Modal, Button } from 'react-bootstrap';
 
 function App() {
 
@@ -18,12 +19,12 @@ function App() {
 
   return (
     <div className="App">
-      <StateButton />
+      {/* <StateButton />
       <TextInput />
       <MyCheckbox />
       <Form />
-      <MoodChecker />
-      {/* <ProductList /> */}
+      <MoodChecker /> */}
+      <ProductList />
 
     </div>
   );
