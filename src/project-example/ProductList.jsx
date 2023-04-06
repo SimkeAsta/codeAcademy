@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { products } from "./data/products";
+import { useEffect, useState } from "react";
 import { ProductItem } from "./ProductItem";
 import { Container } from "./styles/StyledProduct";
 import { Modal, Button } from 'react-bootstrap';
@@ -8,6 +7,8 @@ import { Toast } from "../components/Toast";
 export const ProductList = () => {
   const [activeProduct, setActiveProduct] = useState(null);
   const [addedToCartProduct, setAddedToCartProduct] = useState(null);
+  const [products, setProducts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleProductClick = (product) => {
     setActiveProduct(product);
@@ -23,10 +24,25 @@ export const ProductList = () => {
     setActiveProduct(null);
   };
 
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data.products);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+
   return (
     <>
       <Container>
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductItem product={product} onClick={handleProductClick} />
         ))}
       </Container>
