@@ -43,7 +43,7 @@ export const ProductList = () => {
     <>
       <Container>
         {products?.map((product) => (
-          <ProductItem product={product} onClick={handleProductClick} />
+          <ProductItem key={product.id} product={product} onClick={handleProductClick} />
         ))}
       </Container>
 
