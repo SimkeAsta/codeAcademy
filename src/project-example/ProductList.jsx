@@ -3,9 +3,11 @@ import { products } from "./data/products";
 import { ProductItem } from "./ProductItem";
 import { Container } from "./styles/StyledProduct";
 import { Modal, Button } from 'react-bootstrap';
+import { Toast } from "../components/Toast";
 
 export const ProductList = () => {
   const [activeProduct, setActiveProduct] = useState(null);
+  const [addedToCartProduct, setAddedToCartProduct] = useState(null);
 
   const handleProductClick = (product) => {
     setActiveProduct(product);
@@ -17,6 +19,7 @@ export const ProductList = () => {
 
   const handleAddToCart = () => {
     console.log('Įdėta į krepšelį');
+    setAddedToCartProduct(activeProduct);
     setActiveProduct(null);
   };
 
@@ -27,6 +30,22 @@ export const ProductList = () => {
           <ProductItem product={product} onClick={handleProductClick} />
         ))}
       </Container>
+
+      <Toast 
+        show={addedToCartProduct} 
+        onClose={() => setAddedToCartProduct(null)} 
+        body={`Produktas ${addedToCartProduct?.title} pridėtas į jūsų krepšelį`} 
+      />
+
+      {/* <ToastContainer position="top-center">
+        <Toast show={addedToCartProduct} autohide delay={3000} onClose={() => setAddedToCartProduct(null)}>
+          <Toast.Header />
+          <Toast.Body>
+            Produktas {addedToCartProduct?.title} pridėtas į jūsų krepšelį
+          </Toast.Body>
+        </Toast>
+      </ToastContainer> */}
+
       <Modal show={activeProduct} onHide={handleModalClose}>
         
         <Modal.Header closeButton>
