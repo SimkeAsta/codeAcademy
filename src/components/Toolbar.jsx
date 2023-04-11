@@ -11,6 +11,23 @@ const ToolbarStyled = styled.div`
     padding: 10px 40px;
 `;
 
+const ShoppingCartContainerStyled = styled.div`
+    position: relative;
+`;
+
+const ShoppingCartTotalStyled = styled.div`
+    background-color: #e73830;
+    border-radius: 50%;
+    bottom: -10px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    height: 1.2rem;
+    left: -5px;
+    position: absolute;
+    width: 1.2rem;
+`;
+
 export const Toolbar = () => {
     const [cart, setCart] = useState(null);
 
@@ -24,8 +41,10 @@ export const Toolbar = () => {
 
     return (
         <ToolbarStyled>
-            <FaShoppingCart size={25} />
-            <div>{cart?.carts[0].totalProducts}</div>
+            <ShoppingCartContainerStyled>
+                <FaShoppingCart size={25} />
+                <ShoppingCartTotalStyled>{cart?.carts[0].totalProducts}</ShoppingCartTotalStyled>
+            </ShoppingCartContainerStyled>
         </ToolbarStyled>
     )
 }
