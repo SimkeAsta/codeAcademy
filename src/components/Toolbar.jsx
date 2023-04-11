@@ -37,7 +37,7 @@ export const Toolbar = () => {
             .then(data => {
                 setCart(data);
             });
-    }, [])
+    }, []);
 
     return (
         <ToolbarStyled>

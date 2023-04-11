@@ -14,8 +14,22 @@ import { Toolbar } from './components/Toolbar';
 
 function App() {
 
-  const onPetrasHeaderClick = () => {
+  const onButtonClick = () => {
     alert('Petras header button clicked!');
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Form submitted');
+  };
+
+  const handleSubmitButtonKeydown = (e) => {
+    console.log(e.code);
+  }
+
+  const handleSubmitButtonKeyup = () => {
+    // console.log('Keyup event');
   }
 
   return (
@@ -26,8 +40,18 @@ function App() {
       <Form />
       <MoodChecker /> */}
       <Toolbar />
-      <ProductList />
 
+      <form onSubmit={handleFormSubmit}>
+        <input />
+
+        <button onKeyUp={handleSubmitButtonKeyup} onKeyDown={handleSubmitButtonKeydown}>Submit</button>
+      </form>
+
+      <button onClick={() => alert('Petras header button clicked!')}>
+        Click me
+      </button>
+
+      <ProductList />
     </div>
   );
 }
