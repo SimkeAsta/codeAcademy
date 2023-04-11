@@ -48,7 +48,7 @@ export const ProductList = () => {
       </Container>
 
       <Toast 
-        show={addedToCartProduct} 
+        show={!!addedToCartProduct} 
         onClose={() => setAddedToCartProduct(null)} 
         body={`Produktas ${addedToCartProduct?.title} pridėtas į jūsų krepšelį`} 
       />
