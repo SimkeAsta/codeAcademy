@@ -11,7 +11,7 @@ export const Card = styled.div`
 export const Container = styled.div`
   display: grid;
   max-width: 900px;
-  margin: 40px auto;
+  margin: 10px auto 40px;
   padding: 0 40px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;

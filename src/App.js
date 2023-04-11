@@ -10,6 +10,7 @@ import { MyCheckbox } from './6-paskaita-useState/Checkbox';
 import { Form } from './6-paskaita-useState/Form';
 import { MoodChecker } from './6-paskaita-useState/MoodChecker'
 import { Modal, Button } from 'react-bootstrap';
+import { Toolbar } from './components/Toolbar';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <MyCheckbox />
       <Form />
       <MoodChecker /> */}
+      <Toolbar />
       <ProductList />
 
     </div>
