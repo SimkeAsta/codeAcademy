@@ -58,16 +58,16 @@ export const TitleContainer = styled.div`
 export const HeaderWrapper = styled.div`
   display: grid;
   grid-template-columns: 190px 70px;
-  gap: 20px;
+  gap: 10px;
 `;
 
 const CornerItem = styled.div`
   text-align: center;
-  padding: 12px;
+  padding: 12px 10px;
   font-size: 15px;
   font-weight: 700;
   height: 49px;
-  width: 60px;
+  width: 70px;
 `;
 
 export const Discount = styled(CornerItem)`

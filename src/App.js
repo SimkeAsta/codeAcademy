@@ -11,6 +11,10 @@ import { Form } from './6-paskaita-useState/Form';
 import { MoodChecker } from './6-paskaita-useState/MoodChecker'
 import { Modal, Button } from 'react-bootstrap';
 import { Toolbar } from './components/Toolbar';
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from './project-example/HomePage';
+import { Login } from './project-example/Login';
+import { NavBar } from './project-example/NavBar';
 
 function App() {
 
@@ -32,27 +36,41 @@ function App() {
     // console.log('Keyup event');
   }
 
+  const handleOnChange = (e) => {
+    console.log(e.target.value);
+  }
+
   return (
-    <div className="App">
-      {/* <StateButton />
-      <TextInput />
-      <MyCheckbox />
-      <Form />
-      <MoodChecker /> */}
-      <Toolbar />
+    <>
+    <NavBar />
+     <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/products" element={<ProductList />} />
+      <Route path="/login" element={<Login />} />
+     </Routes>
+    </>
+    // <div className="App">
+    //   <HomePage />
+    //   <Login />
+    //   {/* <StateButton />
+    //   <TextInput />
+    //   <MyCheckbox />
+    //   <Form />
+    //   <MoodChecker /> */}
+    //   <Toolbar />
 
-      <form onSubmit={handleFormSubmit}>
-        <input />
+    //   {/* <form onSubmit={handleFormSubmit}>
+    //     <input onChange={handleOnChange} />
 
-        <button onKeyUp={handleSubmitButtonKeyup} onKeyDown={handleSubmitButtonKeydown}>Submit</button>
-      </form>
+    //     <button onKeyUp={handleSubmitButtonKeyup} onKeyDown={handleSubmitButtonKeydown}>Submit</button>
+    //   </form>
 
-      <button onClick={() => alert('Petras header button clicked!')}>
-        Click me
-      </button>
+    //   <button onClick={() => alert('Petras header button clicked!')}>
+    //     Click me
+    //   </button> */}
 
-      <ProductList />
-    </div>
+    //   <ProductList />
+    // </div>
   );
 }
 

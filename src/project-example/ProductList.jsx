@@ -9,6 +9,7 @@ export const ProductList = () => {
   const [addedToCartProduct, setAddedToCartProduct] = useState(null);
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [filter, setFilter] = useState('');
 
   const handleProductClick = (product) => {
     setActiveProduct(product);
@@ -23,6 +24,10 @@ export const ProductList = () => {
     setAddedToCartProduct(activeProduct);
     setActiveProduct(null);
   };
+
+  const onhandleChange = (e) => {
+    setFilter(e.target.value);
+  }
 
   useEffect(() => {
     fetch('https://dummyjson.com/products')
@@ -41,8 +46,11 @@ export const ProductList = () => {
 
   return (
     <>
+    <div>
+    <input onBlur={onhandleChange} />
+    </div>
       <Container>
-        {products?.map((product) => (
+        {products?.filter(product => product.title.toLowerCase().includes(filter)).map((product) => (
           <ProductItem key={product.id} product={product} onClick={handleProductClick} />
         ))}
       </Container>
