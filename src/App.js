@@ -15,6 +15,8 @@ import { Routes, Route } from 'react-router-dom';
 import { HomePage } from './project-example/HomePage';
 import { Login } from './project-example/Login';
 import { NavBar } from './project-example/NavBar';
+import { Register } from './project-example/Register';
+import { ProductDetails } from './project-example/ProductDetails';
 
 function App() {
 
@@ -44,9 +46,12 @@ function App() {
     <>
     <NavBar />
      <Routes>
+      <Route path="*" element={<div>Page not found</div>} />
       <Route path="/" element={<HomePage />} />
       <Route path="/products" element={<ProductList />} />
+      <Route path="/products/:id"  element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
      </Routes>
     </>
     // <div className="App">

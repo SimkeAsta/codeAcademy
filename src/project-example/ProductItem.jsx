@@ -10,9 +10,10 @@ import {
   New,
   BrandTitle,
 } from "./styles/StyledProduct";
+import { Link } from 'react-router-dom';
 
 export const ProductItem = ({ product, onClick }) => {
-  const { title, thumbnail, brand, price, discountPercentage } = product;
+  const { id, title, thumbnail, brand, price, discountPercentage } = product;
 
   const discountedPrice = discountPercentage
     ? Math.round(price * ((100 - discountPercentage) / 100))
@@ -31,6 +32,7 @@ export const ProductItem = ({ product, onClick }) => {
           <New>New</New>
         )}
       </HeaderWrapper>
+      <Link to={`/products/${id}`} >View Details</Link>
       <CardImage src={thumbnail} />
       {discountedPrice ? (
         <Price withDiscount>
