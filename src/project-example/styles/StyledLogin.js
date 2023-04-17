@@ -5,7 +5,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 500px;
+    height: 60vh;
 `
 
 export const StyledInput = styled.input`
@@ -30,4 +30,8 @@ export const StyledHeader = styled.div`
     padding: 20px;
     width: 500px;
     border-radius: 7.5px 7.5px 0px 0px;
+`
+
+export const MainBox = styled.div`
+    width: 500px;
 `

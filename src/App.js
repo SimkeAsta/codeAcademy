@@ -17,41 +17,40 @@ import { Login } from './project-example/Login';
 import { NavBar } from './project-example/NavBar';
 import { Register } from './project-example/Register';
 import { ProductDetails } from './project-example/ProductDetails';
+import { PageNotFound } from './project-example/PageNotFound';
+import { Posts } from './project-example/posts/Posts';
+import { Post } from './project-example/posts/Post';
+import { Comments } from './project-example/posts/Comments';
+import { IndexPost } from './project-example/posts/IndexPost';
+import React from 'react';
+
+const About = React.lazy(() => import('./project-example/About'));
 
 function App() {
-
-  const onButtonClick = () => {
-    alert('Petras header button clicked!');
-  }
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    console.log('Form submitted');
-  };
-
-  const handleSubmitButtonKeydown = (e) => {
-    console.log(e.code);
-  }
-
-  const handleSubmitButtonKeyup = () => {
-    // console.log('Keyup event');
-  }
-
-  const handleOnChange = (e) => {
-    console.log(e.target.value);
-  }
 
   return (
     <>
     <NavBar />
      <Routes>
-      <Route path="*" element={<div>Page not found</div>} />
+      <Route path="*" element={<PageNotFound />} />
       <Route path="/" element={<HomePage />} />
+      <Route path="/about" 
+        element={
+          <React.Suspense fallback={<div>Showing while component loads</div>}>
+            <About />
+          </React.Suspense>
+        }
+      />
       <Route path="/products" element={<ProductList />} />
       <Route path="/products/:id"  element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/posts" element={<Posts />} >
+        <Route index element={<IndexPost />} />
+        <Route path=":postId" element={<Post />}>
+          <Route path="comments" element={<Comments />} />
+        </Route>
+      </Route>
      </Routes>
     </>
     // <div className="App">

@@ -1,4 +1,4 @@
-import { StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
+import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -32,7 +32,7 @@ export const Register = () => {
 
   return (
     <LoginContainer>
-      <div style={{ width: "500px" }}>
+      <MainBox>
         <StyledHeader>
           <h2>
             <b>Have your account registered</b>
@@ -66,7 +66,7 @@ export const Register = () => {
           />
           <StyledButton className="btn">REGISTER</StyledButton>
         </StyledForm>
-      </div>
+      </MainBox>
       <p>
         Already have an account? <Link to="/login">Login HERE</Link>
       </p>

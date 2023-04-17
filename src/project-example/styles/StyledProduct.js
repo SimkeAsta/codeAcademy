@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const CardImage = styled.img`
   width: 270px;
   height: 170px;
-  margin-top: 80px; // 40px
+  margin-top: 40px
 `;
 
 export const Price = styled.div`
