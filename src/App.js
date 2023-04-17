@@ -22,11 +22,14 @@ import { Posts } from './project-example/posts/Posts';
 import { Post } from './project-example/posts/Post';
 import { Comments } from './project-example/posts/Comments';
 import { IndexPost } from './project-example/posts/IndexPost';
-import React from 'react';
+import React, { useState } from 'react';
+import Protected from './project-example/Protected';
 
 const About = React.lazy(() => import('./project-example/About'));
 
 function App() {
+
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   return (
     <>
@@ -45,10 +48,12 @@ function App() {
       <Route path="/products/:id"  element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/posts" element={<Posts />} >
-        <Route index element={<IndexPost />} />
-        <Route path=":postId" element={<Post />}>
-          <Route path="comments" element={<Comments />} />
+      <Route element={<Protected isSignedIn={isSignedIn} />} >
+        <Route path="/posts" element={<Posts />} >
+          <Route index element={<IndexPost />} />
+          <Route path=":postId" element={<Post />}>
+            <Route path="comments" element={<Comments />} />
+          </Route>
         </Route>
       </Route>
      </Routes>
