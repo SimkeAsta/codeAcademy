@@ -24,6 +24,8 @@ import { Comments } from './project-example/posts/Comments';
 import { IndexPost } from './project-example/posts/IndexPost';
 import React, { useState } from 'react';
 import Protected from './project-example/Protected';
+import { CommentInfo } from './project-example/posts/CommentInfo';
+import { CommentIndex } from './project-example/posts/CommentIndex';
 
 const About = React.lazy(() => import('./project-example/About'));
 
@@ -52,7 +54,10 @@ function App() {
         <Route path="/posts" element={<Posts />} >
           <Route index element={<IndexPost />} />
           <Route path=":postId" element={<Post />}>
-            <Route path="comments" element={<Comments />} />
+            <Route path="comments" element={<Comments />} >
+              <Route index element={<CommentIndex />} />
+              <Route path="commentInfo" element={<CommentInfo />} />
+            </Route>
           </Route>
         </Route>
       </Route>
