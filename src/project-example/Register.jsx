@@ -1,6 +1,7 @@
 import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 export const Register = () => {
   const [name, setName] = useState("");
@@ -14,7 +15,13 @@ export const Register = () => {
     password: ''
   });
 
-  const onHandleSubmit = () => {
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    // POST request i "http://localhost:5000........"
+    axios.post("http://localhost:5000/register", formData)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+
     alert(`${formData.name} ${formData.surname} registered with: ${formData.email}`);
   }
 

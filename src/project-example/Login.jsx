@@ -1,11 +1,12 @@
 import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
 import { Link, useNavigate } from 'react-router-dom';
 
-export const Login = () => {
+export const Login = ({ setIsSignedIn }) => {
 
   const navigate = useNavigate();
 
   const handleOnSubmit = () => {
+    setIsSignedIn(true);
     navigate("/products");
   }
 
