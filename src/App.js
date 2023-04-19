@@ -30,22 +30,17 @@ import { CommentIndex } from './project-example/posts/CommentIndex';
 const About = React.lazy(() => import('./project-example/About'));
 
 function App() {
-
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const navigate = useNavigate();
+  
+  const handleLogout = () => setIsSignedIn(false);
+  const handleLogin = () => setIsSignedIn(true);
 
   return (
     <>
-      <NavBar isSignedIn={isSignedIn} />
-      {isSignedIn ? (<button onClick={() => setIsSignedIn(false)}>LOGOUT</button>) : 
-                    (<button onClick={() => {
-                      setIsSignedIn(true);
-                      navigate("/");
-                    }}>LOGIN</button>)
-                    }
+      <NavBar isSignedIn={isSignedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/login" element={<Login setIsSignedIn={setIsSignedIn} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<HomePage />} />
         <Route element={<Protected isSignedIn={isSignedIn} />}>

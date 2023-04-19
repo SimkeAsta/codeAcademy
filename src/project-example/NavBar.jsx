@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const NavBar = ({ isSignedIn }) => {
+export const NavBar = ({ isSignedIn, onLogout }) => {
 
     return (
         <nav>
@@ -28,6 +28,11 @@ export const NavBar = ({ isSignedIn }) => {
                     </>
                 )}
             </ul>
+            {isSignedIn && (
+                <button onClick={onLogout}>
+                    LOGOUT
+                </button>
+            )}
         </nav>
     )
 }

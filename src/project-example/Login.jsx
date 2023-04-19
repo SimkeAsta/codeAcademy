@@ -1,15 +1,15 @@
 import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
 import { Link, useNavigate } from 'react-router-dom';
 
-export const Login = ({ setIsSignedIn }) => {
+export const Login = ({ onLogin }) => {
 
   const navigate = useNavigate();
 
-  const handleOnSubmit = () => {
-    setIsSignedIn(true);
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    onLogin();
     navigate("/products");
   }
-
 
   return (
     <>
