@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar isSignedIn={isSignedIn} />
       {isSignedIn ? (<button onClick={() => setIsSignedIn(false)}>LOGOUT</button>) : 
                     (<button onClick={() => {
                       setIsSignedIn(true);
