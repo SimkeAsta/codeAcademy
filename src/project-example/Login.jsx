@@ -48,7 +48,7 @@ export const Login = ({ onLogin }) => {
           <StyledInput name="password" onChange={handleOnChange} type="password" placeholder="*********" />
           <StyledButton className="btn">LOGIN</StyledButton>
 
-          <Error>{error}</Error>
+          {error && <Error>{error}</Error>}
 
         </StyledForm>
       </MainBox>
