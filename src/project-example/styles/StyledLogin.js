@@ -35,3 +35,12 @@ export const StyledHeader = styled.div`
 export const MainBox = styled.div`
     width: 500px;
 `
+
+export const Error = styled.div`
+    background-color: #f09292;
+    border: 1px solid red;
+    border-radius: 6px;
+    color: red;
+    padding: 6px 0;
+    text-align: center;
+`;

@@ -42,8 +42,8 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<HomePage />} />
         <Route element={<Protected isSignedIn={isSignedIn} />}>
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/about"
             element={

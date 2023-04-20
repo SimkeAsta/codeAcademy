@@ -1,14 +1,37 @@
-import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm } from './styles/StyledLogin';
+import { useState } from 'react';
+import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm, Error } from './styles/StyledLogin';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const Login = ({ onLogin }) => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    onLogin();
-    navigate("/products");
+
+    axios.post("http://localhost:8000/login", formData)
+    .then((response) => {
+      if (response.data.token) {
+        onLogin();
+        navigate('/');
+      } else {
+        setError(response.data.message);
+      }
+    })
+    .catch((err) => console.log(err));
+  }
+
+  const handleOnChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    })
   }
 
   return (
@@ -16,15 +39,18 @@ export const Login = ({ onLogin }) => {
     <button onClick={() => navigate(-1)}>Go Back</button>
     <LoginContainer>
       <MainBox>
-      <StyledHeader>
-        <h2><b>Login to our site</b></h2>
-        <p>Please enter email and password to login</p>
-      </StyledHeader>
-      <StyledForm onSubmit={handleOnSubmit}>
-        <StyledInput type="email" placeholder="youremail@gmail.com" />
-        <StyledInput type="password" placeholder="*********" />
-        <StyledButton className="btn">LOGIN</StyledButton>
-      </StyledForm>
+        <StyledHeader>
+          <h2><b>Login to our site</b></h2>
+          <p>Please enter email and password to login</p>
+        </StyledHeader>
+        <StyledForm onSubmit={handleOnSubmit}>
+          <StyledInput name="email" onChange={handleOnChange} type="email" placeholder="youremail@gmail.com" />
+          <StyledInput name="password" onChange={handleOnChange} type="password" placeholder="*********" />
+          <StyledButton className="btn">LOGIN</StyledButton>
+
+          <Error>{error}</Error>
+
+        </StyledForm>
       </MainBox>
       <p>Don't have an account yet? <Link to="/register" >Register HERE</Link></p>
     </LoginContainer>
