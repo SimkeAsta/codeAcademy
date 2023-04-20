@@ -18,6 +18,7 @@ export const Login = ({ onLogin }) => {
     axios.post("http://localhost:8000/login", formData)
     .then((response) => {
       if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
         onLogin();
         navigate('/');
       } else {
