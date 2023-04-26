@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { MainBox, StyledHeader, LoginContainer, StyledInput, StyledButton, StyledForm, Error } from './styles/StyledLogin';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useContext } from 'react';
+import { AuthenticationContext } from './AuthenticationContext';
 
-export const Login = ({ onLogin }) => {
+export const Login = () => {
+  const { setIsSignedIn } = useContext(AuthenticationContext);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,7 +22,7 @@ export const Login = ({ onLogin }) => {
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        onLogin();
+        setIsSignedIn(true);
         navigate('/');
       } else {
         setError(response.data.message);

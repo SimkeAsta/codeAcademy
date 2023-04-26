@@ -22,23 +22,24 @@ import { Posts } from './project-example/posts/Posts';
 import { Post } from './project-example/posts/Post';
 import { Comments } from './project-example/posts/Comments';
 import { IndexPost } from './project-example/posts/IndexPost';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Protected from './project-example/Protected';
 import { CommentInfo } from './project-example/posts/CommentInfo';
 import { CommentIndex } from './project-example/posts/CommentIndex';
 import axios from 'axios';
+import { AuthenticationContext } from './project-example/AuthenticationContext';
 
 const About = React.lazy(() => import('./project-example/About'));
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const { setIsSignedIn } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsSignedIn(false);
   };
-  const handleLogin = () => setIsSignedIn(true);
+  // const handleLogin = () => setIsSignedIn(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -57,12 +58,12 @@ function App() {
 
   return (
     <>
-      <NavBar isSignedIn={isSignedIn} onLogout={handleLogout} />
+      <NavBar onLogout={handleLogout} />
       <Routes>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route element={<Protected isSignedIn={isSignedIn} />}>
+        <Route element={<Protected />}>
           <Route path="/" element={<HomePage />} />
           <Route
             path="/about"
@@ -76,9 +77,6 @@ function App() {
           />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetails />} />
-          </Route>
-         
-          <Route element={<Protected isSignedIn={isSignedIn} />}>
           <Route path="/posts" element={<Posts />}>
             <Route index element={<IndexPost />} />
             <Route path=":postId" element={<Post />}>

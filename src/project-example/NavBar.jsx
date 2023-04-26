@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthenticationContext } from './AuthenticationContext';
 
-export const NavBar = ({ isSignedIn, onLogout }) => {
+export const NavBar = ({ onLogout }) => {
+    const { isSignedIn } = useContext(AuthenticationContext);
 
     return (
         <nav>
