@@ -1,15 +1,39 @@
-import { useContext } from "react";
-import { Outlet, Navigate } from "react-router-dom"
+import { useContext, useEffect } from "react";
+import { Outlet, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
+import axios from "axios";
 
-const Protected = () => {
-    const { isSignedIn } = useContext(AuthenticationContext);
+const Protected = ({ isLoading, setIsLoading }) => {
+  const { isSignedIn, setIsSignedIn } = useContext(AuthenticationContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    if (!isSignedIn) {
-        return <Navigate to="/login" />
-    }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:8000/token/verify", {
+        headers: {
+          authorization: "Bearer " + token,
+        },
+      })
+      .then((response) => {
+        if (response.data.id) {
+          setIsSignedIn(true);
+          navigate(location.pathname);
+          setIsLoading(false);
+        }
+      });
+  }, []);
 
-    return <Outlet />
-}
+  if (isLoading) {
+    return <div>Page is loading</div>;
+  }
+
+  if (!isSignedIn) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
+};
 
 export default Protected;

@@ -11,6 +11,7 @@ export const ProductDetails = () => {
         fetch(`http://localhost:8000/products/${id}`)
         .then((res) => res.json())
         .then((data) => {
+          // data []; undefined
             setSelectedProduct(data[0]);
             setIsLoadingProduct(false);
         })
@@ -18,6 +19,10 @@ export const ProductDetails = () => {
 
     if (isLoadingProduct) {
         return <div>Page is loading, please wait.</div>
+    }
+
+    if (!selectedProduct) {
+      return <div>Product not found</div>
     }
 
     const { title, thumbnail, brand, category, description, images } = selectedProduct;
