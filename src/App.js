@@ -27,6 +27,7 @@ import { CommentInfo } from "./project-example/posts/CommentInfo";
 import { CommentIndex } from "./project-example/posts/CommentIndex";
 import { AuthenticationContext } from "./project-example/AuthenticationContext";
 import { NewProduct } from "./project-example/NewProduct";
+import { Basket } from "./project-example/Basket";
 
 const About = React.lazy(() => import("./project-example/About"));
 
@@ -65,6 +66,7 @@ function App() {
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/addProduct" element={<NewProduct />} />
+          <Route path="/basket" element={<Basket />} />
           <Route path="/posts" element={<Posts />}>
             <Route index element={<IndexPost />} />
             <Route path=":postId" element={<Post />}>

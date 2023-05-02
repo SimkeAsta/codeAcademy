@@ -26,6 +26,9 @@ export const NavBar = ({ isLoading, onLogout }) => {
             <li>
               <Link to="/addProduct">Add new product</Link>
             </li>
+            <li>
+              <Link to="/basket">My Basket</Link>
+            </li>
           </>
         ) : (
           <>

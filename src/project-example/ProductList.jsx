@@ -3,6 +3,8 @@ import { ProductItem } from "./ProductItem";
 import { Container } from "./styles/StyledProduct";
 import { Modal, Button } from "react-bootstrap";
 import { Toast } from "../components/Toast";
+import { useContext } from "react";
+import { StoreContext } from "./reducerForBasket/StoreContext";
 
 export const ProductList = () => {
   const [activeProduct, setActiveProduct] = useState(null);
@@ -10,6 +12,7 @@ export const ProductList = () => {
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const { addToBasket } = useContext(StoreContext);
 
   const handleProductClick = (product) => {
     setActiveProduct(product);
@@ -22,6 +25,7 @@ export const ProductList = () => {
   const handleAddToCart = () => {
     console.log("Įdėta į krepšelį");
     setAddedToCartProduct(activeProduct);
+    addToBasket(activeProduct);
     setActiveProduct(null);
   };
 
