@@ -7,32 +7,24 @@ const StoreWrapper = ({ children }) => {
   const [state, dispatch] = useReducer(storeReducer, initialState);
 
   const addToBasket = (product) => {
-    const updatedBasket = state.products;
-    updatedBasket.push(product);
-
-    updateTotalPrice(updatedBasket);
+    // updateTotalPrice(updatedBasket);
 
     dispatch({
       type: "add",
-      payload: updatedBasket,
+      payload: product,
     });
   };
 
-  const updateTotalPrice = (products) => {
-    let total = 0;
-    products.forEach((product) => {
-      total += Number(product.price);
-    });
-
+  const removeFromBasket = (id) => {
     dispatch({
-      type: "updatePrice",
-      payload: total,
-    });
+      type: "delete",
+      payload: id
+    })
   };
 
   return (
     <StoreContext.Provider
-      value={{ total: state.total, products: state.products, addToBasket }}
+      value={{ total: state.total, products: state.products, addToBasket, removeFromBasket }}
     >
       {children}
     </StoreContext.Provider>

@@ -3,18 +3,30 @@ export const initialState = {
   products: [],
 };
 
+const updateTotalPrice = (products) => {
+  let total = 0;
+  products.forEach((product) => {
+    total += Number(product.price);
+  });
+  return total;
+};
+
 const storeReducer = (state, action) => {
   switch (action.type) {
     case "add":
+      const updatedProductsAfterAdd = [...state.products, action.payload];
       return {
         ...state,
-        products: action.payload,
+        total: updateTotalPrice(updatedProductsAfterAdd),
+        products: updatedProductsAfterAdd,
       };
 
-    case "updatePrice":
+    case "delete":
+      const updatedProductsAfterDelete = state.products.filter((product) => product.id !== action.payload);
       return {
         ...state,
-        total: action.payload,
+        total: updateTotalPrice(updatedProductsAfterDelete),
+        products: updatedProductsAfterDelete
       };
 
     default:

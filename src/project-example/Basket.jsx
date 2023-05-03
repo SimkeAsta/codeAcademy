@@ -4,7 +4,7 @@ import { BasketItem } from "./BasketItem";
 
 export const Basket = () => {
   const { total, products } = useContext(StoreContext);
-
+  
   return (
     <div>
       <div
