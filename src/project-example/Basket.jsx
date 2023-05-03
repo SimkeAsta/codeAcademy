@@ -4,6 +4,10 @@ import { BasketItem } from "./BasketItem";
 
 export const Basket = () => {
   const { total, products } = useContext(StoreContext);
+
+  const mappedProducts = products.map((product) => (
+    <BasketItem key={product.id} item={product} />
+  ));
   
   return (
     <div>
@@ -17,9 +21,7 @@ export const Basket = () => {
         <h3>Your Basket</h3>
         <p>Total: &euro; {total}</p>
       </div>
-      {products.map((product) => (
-        <BasketItem key={product.id} item={product} />
-      ))}
+      {mappedProducts}
     </div>
   );
 };
