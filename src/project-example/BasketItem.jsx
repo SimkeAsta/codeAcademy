@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { StoreContext } from "./reducerForBasket/StoreContext";
 
 export const BasketItem = ({ item }) => {
   const { removeFromBasket } = useContext(StoreContext);
 
-  const handleRemoveItem = () => {
+  // const handleRemoveItem = () => {
+  //   removeFromBasket(item.id);
+  // }
+
+  const handleRemoveItem = useCallback(() => {
     removeFromBasket(item.id);
-  }
+  }, [item, removeFromBasket]);
 
   return (
     <div

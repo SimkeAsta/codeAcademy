@@ -1,13 +1,19 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { StoreContext } from "./reducerForBasket/StoreContext";
 import { BasketItem } from "./BasketItem";
 
 export const Basket = () => {
   const { total, products } = useContext(StoreContext);
 
-  const mappedProducts = products.map((product) => (
-    <BasketItem key={product.id} item={product} />
-  ));
+  // const mappedProducts = products.map((product) => (
+  //   <BasketItem key={product.id} item={product} />
+  // ));
+
+  const mappedProducts = useMemo(() => {
+    return products.map((product) => (
+      <BasketItem key={product.id} item={product} />
+    ))
+  }, [products]);
   
   return (
     <div>
