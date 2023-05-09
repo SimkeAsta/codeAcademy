@@ -1,4 +1,4 @@
-import { sum } from './math';
+import { getSumArr, sub, sum } from './math';
 
 describe('math.js', () => {
     describe('sum', () => {
@@ -15,6 +15,20 @@ describe('math.js', () => {
     });
 
     describe('sub', () => {
+        test.each([[2, 1, 1]])(
+            'subtracts %p - %p and returns %p',
+            (a, b, result) => {
+                expect(sub(a, b)).toBe(result);
+            }
+        )
+    });
 
+    describe('getSumArr', () => {
+        test.each([[ [1, 2, 3], 6 ]])(
+            'returns array %p sum %p',
+            (arr, result) => {
+                expect(getSumArr(arr)).toBe(result);
+            }
+        )
     });
 });
