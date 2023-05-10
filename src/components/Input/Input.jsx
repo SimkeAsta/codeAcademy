@@ -1,7 +1,7 @@
-export const Input = ({ onChange }) => {
+export const Input = ({ onChange, label }) => {
     return (
         <>
-            <label htmlFor="input">Default label</label>
+            {label && <label data-testid="input-label" htmlFor="input">{label}</label>}
             <input id="input" onChange={onChange} />
         </>
     )
