@@ -5,7 +5,7 @@ describe('Form', () => {
     test('renders correctly without errors', () => {
         render(<Form />);
 
-        const form = screen.getByRole('form', { name: '' });
+        const form = screen.getByTestId('form');
 
         expect(form).toBeInTheDocument();
     });
